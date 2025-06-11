@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Dataset directory (do not track large files)
+ASL_Alphabet_Dataset/
+
+# Model checkpoints and tuning artifacts
+*.h5
+*.ckpt
+*.pb
+*.tflite
+
+# Tuning results and logs
+tuning_results/
+asl_tuning/
+*.log
+
+# Miscellaneous
+*.zip
+*.tar.gz
