@@ -16,20 +16,39 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Dataset directory (do not track large files)
-ASL_Alphabet_Dataset/
+# Data (raw dataset, interim/processed artifacts) - large and regenerable.
+# Directory structure is preserved via .gitkeep; actual contents are ignored.
+/data/**
+!/data/**/
+!/data/**/.gitkeep
 
-# Model checkpoints and tuning artifacts
+# Trained models and checkpoints - large and regenerable via training
+/models/
+
+# Raw hyperparameter-search trial artifacts - large and regenerable
+/results/hyperparameter_search/
+
+# Model artifacts that can appear outside models/ (e.g. under notebooks/)
 *.h5
 *.ckpt
 *.pb
 *.tflite
+variables/
 
-# Tuning results and logs
-tuning_results/
-asl_tuning/
+# Packaging / test / type-check artifacts
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Logs
 *.log
 
-# Miscellaneous
+# Archives
 *.zip
 *.tar.gz
+REFACTOR_PLAN.md

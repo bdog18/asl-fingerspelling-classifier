@@ -1,0 +1,18 @@
+training_config.yaml
+---
+epochs: 10
+batch_size: 32
+learning_rate: 0.001
+optimizer: "adam"
+loss_function: "sparse_categorical_crossentropy"
+metrics:
+  - "accuracy"
+validation_split: 0.2
+early_stopping:
+  monitor: "val_accuracy"
+  patience: 2
+  restore_best_weights: true
+model_checkpoint:
+  monitor: "val_accuracy"
+  save_best_only: true
+  filepath: "./models/best_model.h5"
