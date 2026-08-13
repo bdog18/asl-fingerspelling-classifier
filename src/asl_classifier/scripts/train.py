@@ -24,13 +24,13 @@ def main():
 
     # Build and train the model
     model = build_baseline_model(IMAGE_SIZE + (3,), NUM_CLASSES)
-    history = model.fit(train_ds, validation_data=val_ds, epochs=config['training']['epochs'])
+    history = model.fit(train_ds, validation_data=val_ds, epochs=config['epochs'])
 
     # Save the trained model
     model.save(os.path.join('models', 'baseline_model.h5'))
 
     # Optionally tune hyperparameters
-    if config['training'].get('tune_hyperparameters', False):
+    if config.get('tune_hyperparameters', False):
         run_hyperparameter_search(train_ds, val_ds)
 
 if __name__ == "__main__":

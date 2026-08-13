@@ -2,9 +2,18 @@
 
 import os
 import yaml
+from pathlib import Path
+
+
+def _find_repo_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "pyproject.toml").exists():
+            return parent
+    raise RuntimeError("Could not locate repo root (no pyproject.toml found)")
+
 
 # Base directory for the project
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = _find_repo_root(Path(__file__).resolve())
 
 # Data directories
 DATA_DIR = os.path.join(BASE_DIR, 'data')
@@ -32,6 +41,13 @@ LOGGING_LEVEL = 'INFO'  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
 # Other constants
 NUM_CLASSES = 28  # Number of ASL classes
 IMAGE_SIZE = (200, 200)  # Input image size for the model
+
+
+def _find_repo_root(start: Path) -> Path:
+    for parent in [start, *start.parents]:
+        if (parent / "pyproject.toml").exists():
+            return parent
+    raise RuntimeError("Could not locate repo root (no pyproject.toml found)")
 
 # Function to print configuration settings
 def print_config():

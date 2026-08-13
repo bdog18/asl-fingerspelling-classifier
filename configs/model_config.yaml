@@ -1,3 +1,4 @@
+# Descriptive model only
 model:
   type: "CNN"
   input_shape: [200, 200, 3]
@@ -23,27 +24,11 @@ model:
       pool_size: [2, 2]
     - layer: "Flatten"
     - layer: "Dense"
-      units: 128
+      units: 256
       activation: "relu"
     - layer: "Dropout"
       rate: 0.5
     - layer: "Dense"
       units: 28
       activation: "softmax"
-  
-training:
-  optimizer: "adam"
-  loss: "sparse_categorical_crossentropy"
-  metrics:
-    - "accuracy"
-  epochs: 10
-  batch_size: 32
-  callbacks:
-    - early_stopping:
-        monitor: "val_accuracy"
-        patience: 2
-        restore_best_weights: true
-    - model_checkpoint:
-        filepath: "best_model.h5"
-        monitor: "val_accuracy"
-        save_best_only: true
+model_path: "./models/initial_model.h5"
